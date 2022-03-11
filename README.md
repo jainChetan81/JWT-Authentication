@@ -21,40 +21,13 @@ A Node.js based backend application that uses Express framework to implement jso
     --- ## db.json // database for users
     --- ## index.ts //main server file
 
-## Lessons Learned
-
--   I started this project to learn about ExpressJS
--   Authentication with encrypted password
-
-## Contributing
-
-Contributions are always welcome!
-
-See project structure
-
-Please adhere to the Project Structure
-
-## Feedback
-
-If you have any feedback, please reach out to me at jain.cj.chetan@gmail.com
-
-## 🚀 About Me
-
-I am a Full Stack Web Developer with over two years of experience in various tech stacks.
-
-## 🔗 Links
-
-[![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://thechetanjain.in/)
-[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://thechetanjain.in/linkedin/)
-[![twitter](https://img.shields.io/badge/twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://thechetanjain.in/github)
-
 ## Environment Variables
 
 To run this project, you will need to add the following environment variables to your .env file
 
-`JWT_SECRET` : any secret of any length depending on security needs
+`JWT_SECRET` : any string of any length that can serve as encryption key depending on security needs
 
-## Install
+## Run Locally
 
 To install this project with npm or yarn.
 Go to project directory
@@ -79,7 +52,6 @@ Go to project directory
 ```bash
   npm run build || yarn build
 ```
-
 
 ## API Reference
 
@@ -158,3 +130,30 @@ Go to project directory
 ## Authors
 
 -   [@jainChetan](https://thechetanjain.in)
+
+## Lessons Learned
+
+-   I started this project to learn about ExpressJS
+-   Authentication with encrypted password
+
+## Contributing
+
+Contributions are always welcome!
+
+See project structure
+
+Please adhere to the Project Structure
+
+## Feedback
+
+If you have any feedback, please reach out to me at jain.cj.chetan@gmail.com
+
+## 🚀 About Me
+
+I am a Full Stack Web Developer with over two years of experience in various tech stacks.
+
+## 🔗 Links
+
+[![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://thechetanjain.in/)
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://thechetanjain.in/linkedin/)
+[![twitter](https://img.shields.io/badge/twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://thechetanjain.in/github)
