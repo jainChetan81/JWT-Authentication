@@ -1,2 +1,3 @@
 import authRouter from "./auth";
-export { authRouter };
+import blogsRouter from "./blogs";
+export { authRouter, blogsRouter };

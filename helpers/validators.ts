@@ -1,4 +1,7 @@
 import { Response, Request, NextFunction } from "express";
+import JWT from "jsonwebtoken";
+
+const JWT_SECRET = process.env.JWT_SECRET || "fallback_secret";
 
 const userValidator = (req: Request, res: Response, next: NextFunction) => {
 	req.check("email", "Email must be between 3 - 32 characters").isEmail().withMessage("Email is Invalid").isLength({
@@ -22,4 +25,27 @@ const userValidator = (req: Request, res: Response, next: NextFunction) => {
 	}
 	next();
 };
-export { userValidator };
+const tokenValidator = (req: Request, res: Response, next: NextFunction) => {
+	let token = req.header("x-auth-token") || req.headers["authorization"];
+	if (token && token.startsWith("Bearer ")) {
+		token = token.slice(7, token.length);
+	}
+	if (token) {
+		try {
+			const user = JWT.verify(token, JWT_SECRET);
+			console.log(user);
+			next();
+		} catch (error: any) {
+			if (error.name === "TokenExpiredError") {
+				return res.status(401).json({ error: "Token Expired" });
+			}
+			if (error.name === "JsonWebTokenError") {
+				return res.status(401).json({ error: "Token is not valid" });
+			}
+
+			return res.status(500).json({ error: "Server Error" });
+		}
+	}
+	return res.status(401).json({ error: "Token is not provided" });
+};
+export { userValidator, tokenValidator };

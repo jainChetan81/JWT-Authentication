@@ -1,5 +1,5 @@
 import express from "express";
-import { authRouter } from "./routes";
+import { authRouter, blogsRouter } from "./routes";
 import expressValidator from "express-validator";
 
 const PORT = process.env.PORT || 5000;
@@ -11,6 +11,7 @@ app.get("/", (req, res) => {
 	res.send("Well done chetan1!");
 });
 app.use("/auth", authRouter);
+app.use("/blogs", blogsRouter);
 app.listen(PORT, () => {
 	console.log(`The application is listening on port ${PORT}!`);
 });
