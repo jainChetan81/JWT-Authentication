@@ -1,6 +1,6 @@
 import { Response, Request, NextFunction } from "express";
 
-const userSignupValidator = (req: Request, res: Response, next: NextFunction) => {
+const userValidator = (req: Request, res: Response, next: NextFunction) => {
 	req.check("email", "Email must be between 3 - 32 characters").isEmail().withMessage("Email is Invalid").isLength({
 		min: 4,
 		max: 32,
@@ -22,4 +22,4 @@ const userSignupValidator = (req: Request, res: Response, next: NextFunction) =>
 	}
 	next();
 };
-export { userSignupValidator };
+export { userValidator };

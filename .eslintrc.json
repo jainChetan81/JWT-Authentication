@@ -1,11 +1,13 @@
 {
 	"extends": ["eslint:recommended"],
 	"env": {
-		"browser": true,
-		"node": true
+		"node": true,
+		"es6": true
 	},
 	"parserOptions": {
 		"ecmaVersion": 8,
+		"sourceType": "module",
+		"allowImportExportEverywhere": true,
 		"ecmaFeatures": {
 			"experimentalObjectRestSpread": true,
 			"impliedStrict": true,
@@ -16,6 +18,9 @@
 		"no-debugger": 0,
 		"no-alert": 0,
 		"no-unused-vars": 1,
+		"brace-style": ["error", "stroustrup"],
+		"no-var": ["off"],
+		"one-var": ["off"],
 
 		"prefer-const": [
 			"warn",
