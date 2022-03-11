@@ -28,7 +28,9 @@ authRouter.post("/signup", userValidator, async (req: Request, res: Response) =>
 		const jsonStringified = JSON.stringify(users);
 		writeFile(filepath, jsonStringified, "utf-8", (err) => {
 			if (err) return res.status(500).send("Error writing to file");
-			return res.status(201).json({ message: "User created successfully", user, token });
+			return res
+				.status(201)
+				.json({ message: "User created successfully", user: { id: user.id, email: user.email }, token });
 		});
 	} catch (error) {
 		console.error(error);
@@ -58,6 +60,20 @@ authRouter.get("/users", async (_req: Request, res: Response) => {
 		const jsonString = readFileSync(filepath, "utf-8");
 		const users: User[] = JSON.parse(jsonString);
 		return res.status(200).json(users);
+	} catch (error) {
+		console.error(error);
+		return res.status(500).send("Error reading file from disk");
+	}
+});
+// get user by specific id
+authRouter.get("/user/:id", async (req: Request, res: Response) => {
+	const { id } = req.params;
+	try {
+		const jsonString = readFileSync(filepath, "utf-8");
+		const users: User[] = JSON.parse(jsonString);
+		const user = users.find((user: User) => user.id === id);
+		if (!user) return res.status(400).json({ message: "User does not exist, Invalid Id" });
+		return res.status(200).json({ user: { id: user.id, email: user.email } });
 	} catch (error) {
 		console.error(error);
 		return res.status(500).send("Error reading file from disk");
